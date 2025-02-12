@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,7 +14,6 @@
 		A85A888C2BD6DCE9000D0EC5 /* ContentViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85A888B2BD6DCE9000D0EC5 /* ContentViewViewModel.swift */; };
 		A8D9E3E42BD6E70F005BA7D9 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D9E3E32BD6E70F005BA7D9 /* LoginView.swift */; };
 		A8D9E3E62BD6E71A005BA7D9 /* LoginViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D9E3E52BD6E71A005BA7D9 /* LoginViewViewModel.swift */; };
-		A8D9E3E82BD6EA91005BA7D9 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D9E3E72BD6EA91005BA7D9 /* RootView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,8 +25,14 @@
 		A85A888B2BD6DCE9000D0EC5 /* ContentViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewViewModel.swift; sourceTree = "<group>"; };
 		A8D9E3E32BD6E70F005BA7D9 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		A8D9E3E52BD6E71A005BA7D9 /* LoginViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewViewModel.swift; sourceTree = "<group>"; };
-		A8D9E3E72BD6EA91005BA7D9 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		D2011D5E2D5CBAD7008570BF /* Models */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Models; sourceTree = "<group>"; };
+		D2011D612D5CBB98008570BF /* Services */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Services; sourceTree = "<group>"; };
+		D2011D642D5CC7EE008570BF /* Views */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Views; sourceTree = "<group>"; };
+		D2011D672D5CC861008570BF /* Modifiers */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Modifiers; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		A85A88762BD69FB7000D0EC5 /* Frameworks */ = {
@@ -60,7 +65,10 @@
 			isa = PBXGroup;
 			children = (
 				A85A887C2BD69FB7000D0EC5 /* StateAndDataFlowApp.swift */,
-				A8D9E3E72BD6EA91005BA7D9 /* RootView.swift */,
+				D2011D672D5CC861008570BF /* Modifiers */,
+				D2011D612D5CBB98008570BF /* Services */,
+				D2011D5E2D5CBAD7008570BF /* Models */,
+				D2011D642D5CC7EE008570BF /* Views */,
 				A8D9E3E22BD6E6FC005BA7D9 /* LoginView */,
 				A85A888A2BD6DC8C000D0EC5 /* ContentView */,
 				A85A88802BD69FB9000D0EC5 /* Assets.xcassets */,
@@ -109,6 +117,12 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				D2011D5E2D5CBAD7008570BF /* Models */,
+				D2011D612D5CBB98008570BF /* Services */,
+				D2011D642D5CC7EE008570BF /* Views */,
+				D2011D672D5CC861008570BF /* Modifiers */,
 			);
 			name = StateAndDataFlow;
 			productName = StateAndDataFlow;
@@ -167,7 +181,6 @@
 			files = (
 				A8D9E3E62BD6E71A005BA7D9 /* LoginViewViewModel.swift in Sources */,
 				A85A887F2BD69FB7000D0EC5 /* ContentView.swift in Sources */,
-				A8D9E3E82BD6EA91005BA7D9 /* RootView.swift in Sources */,
 				A85A887D2BD69FB7000D0EC5 /* StateAndDataFlowApp.swift in Sources */,
 				A8D9E3E42BD6E70F005BA7D9 /* LoginView.swift in Sources */,
 				A85A888C2BD6DCE9000D0EC5 /* ContentViewViewModel.swift in Sources */,

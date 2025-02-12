@@ -8,21 +8,38 @@
 import SwiftUI
 
 struct LoginView: View {
+    // MARK: - Properties
     @EnvironmentObject private var loginViewVM: LoginViewViewModel
     
     var body: some View {
         VStack {
-            TextField("Enter your name", text: $loginViewVM.name)
+            TextFieldView(loginViewVM: loginViewVM)
                 .multilineTextAlignment(.center)
-            Button(action: login) {
+            Button(action: loginViewVM.login) {
                 Label("OK", systemImage: "checkmark.circle")
             }
+            .disabled(!loginViewVM.nameIsValid)
         }
+        .padding()
     }
+}
+
+struct TextFieldView: View {
+    // MARK: - Properties
+    @ObservedObject var loginViewVM: LoginViewViewModel
     
-    private func login() {
-        if !loginViewVM.name.isEmpty {
-            loginViewVM.isLoggedIn.toggle()
+    var body: some View {
+        ZStack {
+            TextField("Type your name...", text: $loginViewVM.user.name)
+                .multilineTextAlignment(.center)
+            HStack {
+                Spacer()
+                Text(loginViewVM.userNameCharCount)
+                    .font(.callout)
+                    .foregroundStyle(loginViewVM.nameIsValid ? .green : .red)
+                    .padding([.top, .trailing])
+            }
+            .padding(.bottom)
         }
     }
 }

@@ -8,51 +8,43 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject private var contentViewVM: ContentViewViewModel
+    // MARK: - Properties
     @EnvironmentObject private var loginViewVM: LoginViewViewModel
+    private let contentViewMV = ContentViewViewModel()
     
     var body: some View {
         VStack {
-            Text("Hi, \(loginViewVM.name)")
-                .font(.title)
-                .padding(.top, 100)
-            
-            Text(contentViewVM.counter.formatted())
+            Text("Hi, \(loginViewVM.user.name)!")
                 .font(.largeTitle)
-                .padding(.top, 100)
+                .offset(x: 0, y: 100)
+            Text(contentViewMV.counter.formatted())
+                .font(.largeTitle)
+                .offset(x: 0, y: 200)
+            
+            Spacer()
+            
+            VStack {
+                Spacer()
                 
-            Spacer()
-            
-            ButtonView(contentViewVM: contentViewVM)
-            
-            Spacer()
+                ButtonView(
+                    title: contentViewMV.buttonTitle,
+                    color: .red,
+                    action: contentViewMV.startTimer
+                )
+                
+                Spacer()
+
+                ButtonView(
+                    title: "LogOut",
+                    color: .blue,
+                    action: loginViewVM.logout
+                )
+            }
         }
-        .padding()
     }
 }
 
 #Preview {
     ContentView()
-        .environmentObject(ContentViewViewModel())
         .environmentObject(LoginViewViewModel())
-}
-
-struct ButtonView: View {
-    @ObservedObject var contentViewVM: ContentViewViewModel
-    
-    var body: some View {
-        Button(action: contentViewVM.startTimer) {
-            Text(contentViewVM.buttonTitle)
-                .font(.title)
-                .fontWeight(.bold)
-                .foregroundStyle(.white)
-        }
-        .frame(width: 200, height: 60)
-        .background(.red)
-        .clipShape(.rect(cornerRadius: 20))
-        .overlay (
-            RoundedRectangle(cornerRadius: 20)
-                .stroke(.black, lineWidth: 4)
-        )
-    }
 }

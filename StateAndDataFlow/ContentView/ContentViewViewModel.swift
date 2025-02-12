@@ -6,15 +6,17 @@
 //
 
 import Foundation
-import Combine
+import Observation
 
-final class ContentViewViewModel: ObservableObject {
-    let objectWillChange = ObservableObjectPublisher()
+@Observable final class ContentViewViewModel {
+    // MARK: - Public Properties
     var counter = 3
     var buttonTitle = "Start"
     
+    // MARK: - Private Properties
     private var timer: Timer?
     
+    // MARK: - Public Methods
     func startTimer() {
         if counter > 0 {
             timer = Timer.scheduledTimer(
@@ -29,6 +31,7 @@ final class ContentViewViewModel: ObservableObject {
         buttonDidTapped()
     }
     
+    // MARK: - Private Methods
     @objc private func updateCounter() {
         if counter > 0 {
             counter -= 1
@@ -36,8 +39,6 @@ final class ContentViewViewModel: ObservableObject {
             killTimer()
             buttonTitle = "Reset"
         }
-        
-        objectWillChange.send()
     }
     
     private func killTimer() {
@@ -52,7 +53,5 @@ final class ContentViewViewModel: ObservableObject {
         } else {
             buttonTitle = "Wait..."
         }
-        
-        objectWillChange.send()
     }
 }
